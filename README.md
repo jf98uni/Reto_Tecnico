@@ -13,11 +13,11 @@ Preferiblemente clone este proyecto en visual studio code usando git
 En tal caso de usar otro programa por favor asegúrese de tener toda la carpeta Reto_Tecnico abierta en el programa, ya que todos los archivos que contiene la misma
 son indispensables para su funcionamiento.
 
-Cumpliendo con lo anterior no se debiar tener ningún problema para escribir en el csv
+Cumpliendo con lo anterior no se debería tener ningún problema para guardar el historial en el csv.
 
-1. En visual o el programa de su preferencia abra el archivo view.py 
+1. En visual o el programa de su preferencia abra el archivo view.py y asegurese de tener la carpeta Reto_tecnico abierta en el programa.
 
-2. Dele run al archivo y en la terminal vera como se inicia el juego 
+2. Dele run al archivo view.py y en la terminal vera como se inicia el juego 
 
 3. Para jugar ingrese la tecla "y" en minúsculas y enter
 
