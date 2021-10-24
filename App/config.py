@@ -1,3 +1,6 @@
+
+# se usa para facilitar el acceso a los csv
+
 import os
 import sys
 file_path = os.path.join(os.path.dirname(__file__), '..')

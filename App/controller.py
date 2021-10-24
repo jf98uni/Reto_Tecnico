@@ -15,7 +15,7 @@ respuestas = [] # las respuestas a la pregunta
 
 Dollars = 0 #el dinero acomulado del jugador
 
-jugador = ""
+jugador = "" # variable que guarda el nombre del jugador 
 
 
 def iniciar_juego_pregutnas (respuesta): # inica el juego "El jugador debe especificar si quiere o no jugar"
@@ -28,7 +28,7 @@ def iniciar_juego_pregutnas (respuesta): # inica el juego "El jugador debe espec
         
         global pregunta_actual  # inicializa solo las preguntas
         
-        pregunta_actual = model.seleccionar_categoria_preguntas(categoria)
+        pregunta_actual = model.seleccionar_categoria_preguntas(categoria) # asigna una pregunta de categoria 1 a la pregunta actual
         
         return pregunta_actual
     if respuesta == "n":
@@ -48,11 +48,11 @@ def iniciar_juego_respuestas (respuesta): # inica el juego "El jugador debe espe
         
         categoria = categoria_acatual
         
-        respuestas = model.selec_cate_respuestas(categoria)
+        respuestas = model.selec_cate_respuestas(categoria) # asigna las respuestas de la pregunta actual
         
         return respuestas
         
-    if respuesta == "n":
+    if respuesta == "n": # te da un mensaje de despedida del juego si no quieres jugar
         
         print ('Nos vemos Luego !!')
     
@@ -71,31 +71,31 @@ def continuar_1_Actualizar_preguntas (respuesta):
     global Dollars
     
     
-    if respuesta == "y": # eleva la categoria del juego para pasar al siguiente nivel
+    if respuesta == "y": # eleva la categoria del juego para pasar al siguiente nivel 
         
         categoria_acatual = categoria_acatual + 1
         
-        pregunta_actual = model.seleccionar_categoria_preguntas(categoria_acatual)
+        pregunta_actual = model.seleccionar_categoria_preguntas(categoria_acatual) # actualiza la pregunta_actual con una pregunta aleatoria de la siguiente categoria
         
 
         
         return pregunta_actual
     
-    elif respuesta == "n":
+    elif respuesta == "n":  # te despide del juego y guarda tus datos en el historial
         
         guardar(jugador,Dollars)
         
         print (" Te llevas a casa: {}".format(Dollars))
 
 
-
+# estos le preguntan al usuario si continua 
 def continuar_1_Actualizar_respuestas (respuesta):
     
     global categoria_acatual
     
     global respuestas
     
-    if respuesta == "y": # eleva la categoria del juego para pasar al siguiente nivel
+    if respuesta == "y": # actualiza las respuestas a las respuestas a la nueva pregunta
         
         respuestas = model.selec_cate_respuestas(categoria_acatual)
         
@@ -103,7 +103,8 @@ def continuar_1_Actualizar_respuestas (respuesta):
 
 
    
-    
+
+  
 def verificar_respuesta (respuesta): # verifica que la respuesta escogida por el jugador sea la correcta
     
     verificador = model.respuestas_correctas(respuesta,respuestas)
@@ -116,25 +117,25 @@ def verificar_respuesta (respuesta): # verifica que la respuesta escogida por el
         
         global jugador
         
-        if categoria_acatual == 5:
+        if categoria_acatual == 5: # comprueba si el usuario ya alcanzo y respondio correctamente la ultima pregunta y lo guarda en el historial
             
             guardar(jugador,Dollars)
         
         # suma el monto del premio si la respues fue correcta
         
-        Dollars = Dollars + model.puntaje(categoria_acatual)
+        Dollars = Dollars + model.puntaje(categoria_acatual) # va sumando dinero cada vez que el usuario contesta bien 
         
         return 1 
     
-    else:
-        Dollars = 0
+    else: # guarda al jugador en el historial con saldo 0
+        
         guardar(jugador,Dollars)
         return 0
 
 
 
 
-def guardar (jugador,dinero):
+def guardar (jugador,dinero): # funcion para guardar al jugador y el dinero obtenido por este en un archivo csv 
     
     info = []
     
