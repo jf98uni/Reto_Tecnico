@@ -3,7 +3,23 @@
 import controller
 import sys
 
+def continuar_respuesta_incorrecta (): # si das una respuesta no valida el sistema vuelva a preguntar y te alerta al respecto
 
+    print ("Has selecionado una opcion incorrecta por favor selecciona (y) o (n) Tu puntaje no se ha perdido")
+                
+    inputs2 = input('\n Deseas continuar o retirarte: (presiona (y) para continuar y (n) para salir)\n') # pregunta al usuario si desea continuar en el juego o llevarse sus ganancias
+                
+    if inputs2[0] == "y": # si decide continuar avanza a la siguiente categoria y se muestra la pregunta con sus respectivas respuestas
+                
+        preguntas2 = controller.continuar_1_Actualizar_preguntas(inputs2[0])
+                
+        respuestas2 = controller.continuar_1_Actualizar_respuestas(inputs2[0])
+                
+        print ("\n{}\n".format(preguntas2))
+        
+        for respuesta in respuestas2:
+            
+            print (respuesta) 
 
 # estos tres print dan la bienvenida al juego 
 print("\n\nHola Bienvenido a quien quiere ser millonario\n")
@@ -13,7 +29,12 @@ print ("Recuerda simpre darle enter cuando respondas y responder en minuscula")
 
 #---------------------- Menu principal ------------------
 inputs = input('\n Seleccione una opcion para continuar: \n \n')
+
+if inputs not in ["y","n"]: # si das una respuesta no valida el sistema vuelva a preguntar y te alerta al respecto
     
+    print ("Has selecionado una opcion incorrecta por favor escribe (y) o (n)")
+    inputs = input('\n Seleccione una opcion para continuar: \n \n') 
+       
 if inputs[0] == "y":  # inicia el juego
     
     inputs6 = input ("\n Por favor escribe tu nombre: ")
@@ -36,6 +57,10 @@ if inputs[0] == "y":  # inicia el juego
         
         inputs1 = int( input('\n Seleccione una respuesta del 1 al 4 \n \n'))
         
+        if inputs1 not in [1,2,3,4]: #verifica que la respueste sea un numero entero del 1 al 4
+            # si das una respuesta no valida el sistema vuelva a preguntar y te alerta al respecto
+            print ("Has seleccionado una respuesta que no existe. Por favor responde con numeros del 1 al 4\n \n")
+            inputs1 = int( input('\n Seleccione una respuesta del 1 al 4 \n \n'))
         
         if controller.verificar_respuesta(inputs1) ==  1 : # verifica la respuesta que el usuario dio y da el acomulado del premio hasta el momento
             
@@ -45,7 +70,6 @@ if inputs[0] == "y":  # inicia el juego
             
             if controller.categoria_acatual == 5 and controller.Dollars == 11111000: # confirma si el usuario llego al ultimo nivel y respondio correctamente 
                 
-                #controller.guardar()
                 
                 print ("\n \nGanador Ahora eres millonario tu premio es de $ 11,111,000.0 millones de Dolares")
                 
@@ -76,7 +100,7 @@ if inputs[0] == "y":  # inicia el juego
             
                     print (respuesta)  
                     
-            if inputs2[0] == "n": # saca al usuario del juego cuando este lo decide volutariamente
+            elif inputs2[0] == "n": # saca al usuario del juego cuando este lo decide volutariamente
                 
                 preguntas2 = controller.continuar_1_Actualizar_preguntas(inputs2[0])
                 
@@ -86,7 +110,10 @@ if inputs[0] == "y":  # inicia el juego
                 
                 sys.exit(0)
                 
-                    
+                
+            else: # si das una respuesta no valida el sistema vuelva a preguntar y te alerta al respecto
+    
+                continuar_respuesta_incorrecta ()            
                 
         elif controller.verificar_respuesta(inputs1) == 0: #saca al usuario de forma forzada ya que respondio mal
             
@@ -98,13 +125,12 @@ if inputs[0] == "y":  # inicia el juego
     sys.exit(0)    
             
 
-if inputs[0] == "n": # si el usuario no quiere jugar lo saca de la aplicacion
+elif inputs[0] == "n": # si el usuario no quiere jugar lo saca de la aplicacion
         
     print(controller.iniciar_juego_respuestas(inputs[0]))
         
     sys.exit(0)
         
-
 
 
 
