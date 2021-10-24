@@ -41,13 +41,13 @@ if inputs[0] == "y":  # inicia el juego
             
             dollars = controller.Dollars
             
-            print ("\nRespuesta Correcta ahora tu saldo es de: {}\n \n".format(dollars)) 
+            print ("\nRespuesta Correcta ahora tu saldo es de: $ {} Dolares\n \n".format(dollars)) 
             
             if controller.categoria_acatual == 5 and controller.Dollars == 11111000: # confirma si el usuario llego al ultimo nivel y respondio correctamente 
                 
                 #controller.guardar()
                 
-                print ("\n \nGanador Ahora eres millonario")
+                print ("\n \nGanador Ahora eres millonario tu premio es de $ 11,111,000.0 millones de Dolares")
                 
                 inputs4 = input("\n ¿Quieres jugar de nuevo? (presiona (y) para si y (n) para salir)\n \n")
                 
